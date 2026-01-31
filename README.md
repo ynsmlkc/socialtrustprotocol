@@ -1,37 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Social Trust Protocol 🤝
 
-## Getting Started
+**Social Trust Protocol** is a decentralized, reputation-based credit facility built on the **Monad Testnet**. It enables users to leverage their social capital to access undercollateralized loans.
 
-First, run the development server:
+Instead of over-collateralizing assets, users rely on "Vouches" (trust) from other peers. If you trust someone, you stake capital to vouch for them. If they borrow and default, your stake is slashed. If they repay, trust grows.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Trust Circle Visualization](public/trust-circle-preview.png)
+*(Note: Add a screenshot of the dashboard here)*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. **Social Vouching (The Trust Graph)**
+-   Establish trust lines with peers on-chain.
+-   **Interactive Visualization:** A dynamic Force Graph (`react-force-graph-2d`) visualizes your trust network in real-time.
+-   **Real-time Updates:** The graph listens to blockchain events and updates instantly when new vouches are added.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. **Guarantor Staking**
+-   Users can stake **MON** tokens to become guarantors.
+-   Staked funds form the liquidity pool available for borrowers.
+-   You earn yield (implied) for providing liquidity and trust.
 
-## Learn More
+### 3. **Pooled Borrowing & Credit Lines**
+-   **Smart Credit Limit:** Your borrowing limit is determined by the total value of trust vouched for you by your peers.
+-   **Auto-Pooling:** Borrow directly from the protocol's liquidity pool without matching 1:1 with a specific lender.
+-   **Top-up Loans:** Ability to increase your existing loan amount if your credit limit allows.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. **Repayment system**
+-   Transparent loan tracking with "Principal + Interest" breakdown.
+-   Clear "Due Date" display for active loans.
+-   Successfull repayment restores credit capacity effectively.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-   **Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+-   **Language:** TypeScript
+-   **Styling:** TailwindCSS, Lucide Icons
+-   **Blockchain Support:** 
+    -   [Wagmi](https://wagmi.sh) (Hooks)
+    -   [Viem](https://viem.sh) (Low-level Interface)
+-   **Visualization:** React Force Graph 2D
+-   **Network:** Monad Testnet
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
+-   Node.js 18+
+-   Metamask or Rabbit Wallet (configured for Monad Testnet)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# socialtrustprotocol
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ynsmlkc/socialtrustprotocol.git
+    cd socialtrustprotocol
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## ⛓ Smart Contract
+
+**Deployment Address (Monad Testnet):** 
+`0x3E0E1e524ce4b7799E0348CD17F76DcEEA7cB3FF`
+
+The protocol logic handles:
+-   Staking/Unstaking
+-   Trust Limit Management
+-   Loan Issuance & Repayment
+-   Interest Calculation
+-   Default/Slashing Logic
+
+## 🔮 Future Roadmap
+
+-   **Trust Score:** Calculate a reputation score (0-100) based on repayment history.
+-   **Activity Feed:** Real-time notifications for network activity.
+-   **Vouch-Links:** Shareable links to request trust from friends easily.
+-   **Leaderboard:** Gamification for top trust providers.
+
+---
+
+*Built for the Monad Ecosystem.*
