@@ -138,7 +138,7 @@ export function useTrustGraph() {
 
         // Add Incoming (They -> Me)
         if (trusteesData) {
-            trusteesData.forEach((result) => {
+            (trusteesData as any[]).forEach((result) => {
                 if (result.status === 'success' && result.result) {
                     const voucher = result.result as string;
                     if (voucher && voucher !== "0x0000000000000000000000000000000000000000") {
